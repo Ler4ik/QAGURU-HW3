@@ -1,12 +1,17 @@
+import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class GUnit5ToSelenidePage {
 
+    @BeforeEach
+    void beforeEach() {
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+    }
     @Tag("simple")
     @Test
     void gUnit5ShouldHaveSelenidePage(){
