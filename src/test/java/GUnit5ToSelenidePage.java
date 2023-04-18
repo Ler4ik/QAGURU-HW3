@@ -1,4 +1,5 @@
 import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -6,18 +7,14 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
-public class GUnit5ToSelenidePage {
+public class GUnit5ToSelenidePage extends TestBase {
 
-    @BeforeEach
-    void beforeEach() {
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-    }
     @Tag("simple")
     @Test
     void gUnit5ShouldHaveSelenidePage(){
 
         //открыть https://github.com/selenide/selenide
-        open("https://github.com/selenide/selenide");
+        open("selenide/selenide");
         //перейти в раздел Wiki
         $("#wiki-tab").click();
         //убедиться, что в списке страниц (Pages) есть страница SoftAssertions
