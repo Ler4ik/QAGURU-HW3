@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
+import static io.qameta.allure.Allure.step;
 
 public class GUnit5ToSelenidePage extends TestBase {
 
@@ -13,15 +14,20 @@ public class GUnit5ToSelenidePage extends TestBase {
     @Test
     void gUnit5ShouldHaveSelenidePage(){
 
-        //открыть https://github.com/selenide/selenide
+        step("Открыть github",() -> {
         open("selenide/selenide");
-        //перейти в раздел Wiki
+        });
+        step("Перейти в раздел Wiki",() -> {
         $("#wiki-tab").click();
-        //убедиться, что в списке страниц (Pages) есть страница SoftAssertions
+        });
+        step(" Найти страницу SoftAssertions",() -> {
         $("#wiki-pages-filter").setValue("SoftAssertions");
-        //открыть SoftAssertions
+        });
+        step(" Открыть SoftAssertions",() -> {
         $$("ul.filterable-active li span").findBy(text("SoftAssertions")).click();
-        //проверить, что внутри есть пример кода для JUnit5
+        });
+        step(" Проверить, что внутри есть пример кода для JUnit5",() -> {
         $("div #wiki-content").shouldHave(text("Using JUnit5 extend test class"));
+        });
     }
 }
